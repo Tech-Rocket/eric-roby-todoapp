@@ -7,8 +7,12 @@ from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from starlette import status
 from fastapi.security import OAuth2PasswordRequestForm
+from jose import jwt
 
 router = APIRouter()
+
+SECRET_KEY = "06d86619f0b076f7656b5f7b31653c95544590a357a917360876a7c3e04a0816"
+
 
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
