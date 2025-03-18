@@ -10,7 +10,7 @@ from starlette import status
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import jwt, JWTError
 
-router = APIRouter()
+router = APIRouter(prefix="/auth", tags=["auth"x])
 
 SECRET_KEY = "06d86619f0b076f7656b5f7b31653c95544590a357a917360876a7c3e04a0816"
 ALGORITHM = "HS256"
