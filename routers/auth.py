@@ -10,14 +10,14 @@ from starlette import status
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from jose import jwt, JWTError
 
-router = APIRouter(prefix="/auth", tags=["auth"x])
+router = APIRouter(prefix="/auth", tags=["auth"])
 
 SECRET_KEY = "06d86619f0b076f7656b5f7b31653c95544590a357a917360876a7c3e04a0816"
 ALGORITHM = "HS256"
 
 
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_bearer = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_bearer = OAuth2PasswordBearer(tokenUrl="auth/token")
 
 
 class CreateUserRequest(BaseModel):
@@ -79,7 +79,7 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]):
         )
 
 
-@router.post("/auth", status_code=status.HTTP_201_CREATED)
+@router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_user(db: db_dependency, create_user_request: CreateUserRequest):
 
     create_user_model = Users(
