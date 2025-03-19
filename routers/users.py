@@ -8,7 +8,7 @@ from starlette import status
 from .auth import get_current_user
 
 
-router = APIRouter(prefix="/", tags=["users"])
+router = APIRouter(prefix="/user", tags=["users"])
 
 
 def get_db():
@@ -23,6 +23,6 @@ db_dependency = Annotated[Session, Depends(get_db)]
 user_dependency = Annotated[dict, Depends(get_current_user)]
 
 
-@router.app("/", status_code=status.HTTP_200_OK)
+@router.get("/", status_code=status.HTTP_200_OK)
 async def read_all():
     return {"message": "user data"}
