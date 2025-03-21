@@ -30,6 +30,10 @@ class ChangePasswordRequest(BaseModel):
     new_password: str = Field(min_length=3, max_length=50)
 
 
+class UpdateUserDigits(BaseModel):
+    phone_number: str
+
+
 @router.get("/", status_code=status.HTTP_200_OK)
 async def get_user(user: user_dependency, db: db_dependency):
     if user is None:
@@ -61,5 +65,13 @@ async def change_password(
 
 
 @router.put("/phone_number", status_code=status.HTTP_204_NO_CONTENT)
-async def update_phone_number():
-    return {"message": "update phone number"}
+async def update_phone_number(
+    user: user_dependency, db: db_dependency, update_user_digits: UpdateUserDigits
+):
+    if user is None:
+        raise HTTPException(status_code=401, detail="Authenication Failed")
+
+    user_model = db.query(Users).filter(Users.id == user.get("id")).first()
+    user_model.phone_number = update_user_digits.phone_number
+    db.add(user_model)
+    db.commit()
