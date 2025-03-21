@@ -58,3 +58,8 @@ async def change_password(
     )
     db.add(user_model)
     db.commit()
+
+
+@router.put("/phone_number", status_code=status.HTTP_204_NO_CONTENT)
+async def update_phone_number():
+    return {"message": "update phone number"}
