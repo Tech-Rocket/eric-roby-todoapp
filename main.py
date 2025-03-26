@@ -9,12 +9,12 @@ app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
 
-# templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/")
 def test(request: Request):
-    return templates.TemplateResponse("home.html", {"request": requestk})
+    return templates.TemplateResponse("home.html", {"request": request})
 
 
 app.include_router(auth.router)
