@@ -1,73 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>TodoApp</title>
-    <link rel="stylesheet" type="text/css" href='{{url_for('static', path='/css/main.css')}}'>
-    <link rel="stylesheet" type="text/css" href='{{url_for('static', path='/css/bootstrap.css')}}'>
-</head>
-<body>
-    <main class="container">
-        <div class="card">
-            <header class="card-header">
-                <h3>Register</h3>
-            </header>
-            <div class='card-body'>
-                <form id="registerForm">
-                    <div class='form-row'>
-                        <div class="form-group col-md-6 ">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" required/>
-                        </div>
+{% include "layout.html" %}
 
-                        <div class="form-group col-md-6 ">
+<main class="container">
+    <div class="card">
+        <header class="card-header">
+            <h3>Register</h3>
+        </header>
+        <div class='card-body'>
+            <form id="registerForm">
+                <div class='form-row'>
+                    <div class="form-group col-md-6 ">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" required/>
+                    </div>
+
+                    <div class="form-group col-md-6 ">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" required/>
-                        </div>
+                    </div>
+                </div>
+
+                <div class='form-row'>
+                    <div class="form-group col-md-6 ">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" name="firstname" required/>
                     </div>
 
-                    <div class='form-row'>
-                        <div class="form-group col-md-6 ">
-                            <label for="firstname">First Name</label>
-                            <input type="text" class="form-control" name="firstname" required/>
-                        </div>
+                    <div class="form-group col-md-6 ">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" required/>
+                    </div>
+                </div>
 
-                        <div class="form-group col-md-6 ">
-                            <label for="lastname">Last Name</label>
-                            <input type="text" class="form-control" name="lastname" required/>
-                        </div>
+                <div class='form-row'>
+                    <div class="form-group col-md-6 ">
+                        <label for="role">Role</label>
+                        <input type="text" class="form-control" name="role" required/>
                     </div>
 
+                    <div class="form-group col-md-6 ">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="text" class="form-control" name="phone_number" autocomplete="phone_number" required/>
+                    </div>
+                </div>
 
-                    <div class='form-row'>
-                        <div class="form-group col-md-6 ">
-                            <label for="role">Role</label>
-                            <input type="text" class="form-control" name="role" required/>
-                        </div>
-
-                        <div class="form-group col-md-6 ">
-                            <label for="phone_number">Phone Number</label>
-                            <input type="text" class="form-control" name="phone_number" autocomplete="phone_number" required/>
-                        </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6 ">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" required/>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6 ">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" required/>
-                        </div>
-
-                        <div class="form-group col-md-6 ">
-                            <label for="password">Verify Password</label>
-                            <input type="password" class="form-control" name="password2" required/>
-                        </div>
+                    <div class="form-group col-md-6 ">
+                        <label for="password">Verify Password</label>
+                        <input type="password" class="form-control" name="password2" required/>
                     </div>
-                    <button type="submit" class="btn btn-primary">register now</button>
-                </form>
-            </div>
-            <footer class="card-footer text-muted">
-                <a href="/auth/login-page">Already have an account?</a>
-            </footer>
+                </div>
+                <button type="submit" class="btn btn-primary">register now</button>
+            </form>
         </div>
-    </main>
-</body>
-</html>
+        <footer class="card-footer text-muted">
+            <a href="/auth/login-page">Already have an account?</a>
+        </footer>
+    </div>
+</main>
